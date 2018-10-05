@@ -30,16 +30,21 @@ end
 begin
 	loop do
 		option = Welcome.screen
-		if (option.eql? "1") || (option.eql? "2")
-		  puts "-----------"
-		  puts "Fetching.........."
+		if option.eql? "3"
+		 	break
+		else
+			tweets =[]
 			main = Main.new
-			option.eql? "1" ? (tweets = main.twitter_instance.tweet_with_url) : (tweets = main.twitter_instance.tweet_with_url_in_range)
+			
+			if option.eql? "2"
+				tweets = main.twitter_instance.tweet_with_url_in_range
+			elsif option.eql? "1"
+				tweets = main.twitter_instance.tweet_with_url
+			end
 		 	ap tweets if tweets
+		 	
 		 	puts "--------------------press any key to continue................"
 		 	input = gets
-		elsif option.eql? "3"
-		 	break
 		end
 	end
 rescue => e
