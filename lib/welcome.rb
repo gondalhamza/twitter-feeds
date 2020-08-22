@@ -11,9 +11,6 @@ class Welcome
 		puts "**-------------------------------------------------------------**"
 		puts "**-------------------------------------------------------------**"
 		puts "**-------------------------------------------------------------**"
-		puts "**-------------------------------------------------------------**"
-		puts "**-------------------------------------------------------------**"
-		puts "**-------------------------------------------------------------**"
 		puts "*****************************************************************"
 		puts "  "
 		puts "  "
@@ -26,25 +23,29 @@ class Welcome
 		puts "  "
 		puts "*****************************************************************"
 		option = gets.chomp
+		
 		return option
 	end
 
 	def get_input_dates
 		start_date , end_date = nil
+    
     loop do
-			puts "---------------Enter Start date in format(yyyy-mm-dd)"
-    	puts "---------------";start_date = gets.chomp
+			puts "-------*--------Enter Start date in format(yyyy-mm-dd)"
+    	puts "-------*--------";start_date = gets.chomp
 			if is_valid_date(start_date)
 				break
 			end
 		end
+    
     loop do
-    	puts "---------------Enter End date in format(yyyy-mm-dd)"
-    	puts "---------------";end_date = gets.chomp
+    	puts "-------*--------Enter End date in format(yyyy-mm-dd)"
+    	puts "-------*--------";end_date = gets.chomp
 			if is_valid_date(end_date)
 				break
 			end
 		end
+    
     return start_date, end_date
   end
 
@@ -60,5 +61,4 @@ class Welcome
 	    return false
 	  end
   end
-
 end

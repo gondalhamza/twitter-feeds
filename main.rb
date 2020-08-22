@@ -50,7 +50,7 @@ begin
 rescue => e
   puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
   puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-  puts "Problem with your Internet Connection Unable to Complete the Process"
+  puts "Unable to Complete the Process"
   puts e
   puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
   puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"

@@ -7,14 +7,16 @@ class TwitterConfiguration
         config.consumer_secret     =  ENV['CONSUMER_SECRET']
         config.access_token        =  ENV['ACCESS_TOKEN']
         config.access_token_secret =  ENV['ACCESS_TOKEN_SECRET']
-      end    
+      end
     puts "-----------"
+
     setup_twitter
   end
 
   def setup_twitter
     puts "---Setting Up-----"
     puts "-----------"
+
     return @client
   end
 
@@ -26,8 +28,14 @@ class TwitterConfiguration
     collect_tweets = []
     puts "-----------"
     puts "Fetching.........."
-    @client.search("http", result_type: "recent").collect do |tweet|
-      collect_tweets << {"username" => "#{tweet.user.screen_name}", "created_at" => "#{tweet.created_at}", "desription" => "#{tweet.text}", "url" => "#{get_url_of_(tweet)}" }
+
+    @client.search("http", result_type: "recent").take(30).collect do |tweet|
+      collect_tweets << {
+        "username" => "#{tweet.user.screen_name}", 
+        "created_at" => "#{tweet.created_at}", 
+        "desription" => "#{tweet.text}", 
+        "url" => "#{get_url_of_(tweet)}" 
+      }
     end
     collect_tweets
   end
@@ -36,13 +44,20 @@ class TwitterConfiguration
     welcome = Welcome.new 
     output = welcome.get_input_dates
     range = output[0]..output[1]
+
     puts "-----------"
     puts "Fetching.........."
     collect_tweets = []
-    @client.search("http", result_type: "recent").collect do |tweet|
-      collect_tweets << {"username" => "#{tweet.user.screen_name}", "created_at" => "#{tweet.created_at}", "desription" => "#{tweet.text}", "url" => "#{get_url_of_(tweet)}" } if range === "#{tweet.created_at.to_date}" 
+
+    @client.search("http", result_type: "recent").take(30).collect do |tweet|
+      collect_tweets << {
+        "username" => "#{tweet.user.screen_name}", 
+        "created_at" => "#{tweet.created_at}", 
+        "desription" => "#{tweet.text}", 
+        "url" => "#{get_url_of_(tweet)}" 
+      } if range === "#{tweet.created_at.to_date}" 
     end
+    
     collect_tweets
   end
-
 end
