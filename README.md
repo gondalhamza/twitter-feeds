@@ -1,4 +1,6 @@
 # TWITTER FEEDS
+This application fetches the twitter feeds which contains Urls in it.
+
 
 This README document whatever steps are necessary to get the
 application up and running.
